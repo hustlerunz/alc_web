@@ -1,0 +1,36 @@
+.top1{
+
+    height:810px;
+    background-color:#FFFFFF;
+    margin-top:10px;
+
+
+}
+
+.food1{
+
+background-color:#000000;
+height:810px;
+
+
+}
+
+.name1{
+
+background-color:#555555;
+height:90px;
+
+}
+
+.description1{
+
+background-color:#777777;
+height:70px;
+
+
+}
+
+.food1 img {
+    width:100%;
+    height: 810px;
+}

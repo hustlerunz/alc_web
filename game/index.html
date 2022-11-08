@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>auto run</title>
+</head>
+<script>
+setInterval(function getdata(){
+    var apiUrl = 'https://dea3aef8fcbf.ngrok.io/api/v1/resources/game';
+    fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => { 
+        if(data[0].result==0){
+            $("#coin").attr("src", "image/head-flat.png");
+        }
+        else if(data[0].result==1)
+        {
+            $("#coin").attr("src", "image/tail-flat.png");
+        }
+        document.getElementById("con").innerHTML = data[0].time
+        if(data[0].time==0){
+            $("#coin").attr("src", "image/coin-spin.gif");
+        }
+    });
+    //.then(data =>{console.log(data[0].time)});
+},1000);
+
+
+function autorun(){
+    //getdata()
+    //document.getElementById("con").innerHTML = data;
+    //console.log(data[0])
+}
+/*
+var delayInMilliseconds = 5000; 
+var d2 = 6000; 
+var ir = 1000;
+var i = 7;
+function autorun()
+{
+    
+    $("#coin").attr("src", "image/coin-spin.gif");
+    setInterval(function()
+    { 
+        $("#coin").attr("src", "image/coin-spin.gif");
+        i=i-1;
+        document.getElementById("test").innerHTML = "time = "+i;
+        if(i==0)
+        {
+            getdata()
+            result = Math.floor(Math.random() * 2);
+            console.log(result);
+            i=3;
+            if(result==0){
+                $("#coin").attr("src", "image/head-flat.png");
+            }
+            else if(result==1)
+            {
+                $("#coin").attr("src", "image/tail-flat.png");
+            }
+            
+        }
+    },1000);   
+}*/
+</script>
+<body  onload="autorun()">
+    <div id="game"><img id="coin" src="" width="150" height="150"></div> 
+    <div id="test"></div> 
+    <div id="result"></div> 
+    <button id="bt1" >Play</button>
+    <button id="bt2" >Stop</button>
+    <div id="con"></div>
+</body>
+</html>
